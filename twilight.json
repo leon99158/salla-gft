@@ -1,0 +1,271 @@
+{
+    "id": "custom-theme",
+    "name": {
+        "en": "MyCustomTheme",
+        "ar": "ثيم مخصص"
+    },
+    "version": "1.0.0",
+    "description": {
+        "en": "Custom theme for Salla stores",
+        "ar": "ثيم مخصص لمتاجر سلة"
+    },
+    "repository": "https://github.com/ahmednagib2/salla-theme",
+    "support_url": "https://github.com/ahmednagib2/salla-theme/issues",
+    "author": {
+        "name": "Ahmed Nagib",
+        "email": "ahmednagib300@gmail.com",
+        "website": "https://github.com/ahmednagib2"
+    },
+    "theme_support": {
+        "email": "ahmednagib300@gmail.com"
+    },
+    "category": "general",
+    "type": "theme",
+    "engine": "twilight",
+    "scripts": [
+        "js/app.js"
+    ],
+    "styles": [
+        "css/app.css"
+    ],
+    "dependencies": {
+        "@salla.sa/twilight": "^2.0.0",
+        "@salla.sa/twilight-components": "^2.0.0",
+        "@salla.sa/twilight-tailwind": "^2.0.0"
+    },
+    "features": [
+        "RTL",
+        "Responsive",
+        "Multi-language",
+        "Dark Mode",
+        "component-youtube",
+        "component-fixed-banner",
+        "component-testimonials",
+        "component-parallax-background",
+        "component-photos-slider",
+        "component-store-features",
+        "component-square-photos",
+        "component-fixed-products",
+        "component-products-slider",
+        "component-featured-products-1",
+        "component-featured-products-2",
+        "component-featured-products-3",
+        "component-latest-products",
+        "component-vertical-menu-slider",
+        "filters"
+    ],
+    "require": {
+        "salla/twilight": "^2.0"
+    },
+    "hooks": {
+        "beforeMount": [
+            "Salla\\NLJS\\Http"
+        ]
+    },
+    "components": [
+        {
+            "name": "header",
+            "main": true,
+            "slots": [
+                "menu",
+                "cart",
+                "user"
+            ]
+        },
+        {
+            "name": "footer",
+            "main": true,
+            "slots": [
+                "links",
+                "social",
+                "copyright"
+            ]
+        },
+        {
+            "name": "home",
+            "main": true,
+            "slots": [
+                "slider",
+                "featured-products",
+                "categories"
+            ]
+        },
+        {
+            "name": "product",
+            "main": true,
+            "slots": [
+                "gallery",
+                "details",
+                "related"
+            ]
+        },
+        {
+            "name": "brands",
+            "title": "العلامات التجارية",
+            "icon": "sicon-store",
+            "path": "home.brands"
+        },
+        {
+            "name": "enhanced-square",
+            "title": "صور مربعة محسنة",
+            "icon": "sicon-image-square",
+            "path": "home.enhanced-square"
+        },
+        {
+            "name": "main-links",
+            "title": "الروابط الرئيسية",
+            "icon": "sicon-link",
+            "path": "home.main-links"
+        },
+        {
+            "name": "enhanced-slider",
+            "title": "سلايدر محسن",
+            "icon": "sicon-image-carousel",
+            "path": "home.enhanced-slider"
+        },
+        {
+            "name": "slider-products-header",
+            "title": "منتجات مع ترويسة",
+            "icon": "sicon-categories-grid",
+            "path": "home.slider-products-header"
+        }
+    ],
+    "views_path": "src/views",
+    "assets_path": "src/assets",
+    "groups": [
+        {
+            "id": "header",
+            "icon": "sicon-add_row_before",
+            "type": "header",
+            "label": {
+                "ar": "الرأس",
+                "en": "Header"
+            }
+        },
+        {
+            "id": "home",
+            "icon": "sicon-home",
+            "type": "page",
+            "label": {
+                "ar": "الصفحة الرئيسية",
+                "en": "Home Page"
+            }
+        },
+        {
+            "id": "footer",
+            "icon": "sicon-add_row_after",
+            "type": "footer",
+            "label": {
+                "ar": "التذييل",
+                "en": "Footer"
+            }
+        }
+    ],
+    "provide": [
+        "Salla\\NLJS\\Http"
+    ],
+    "theme": {
+        "primary": "#0c6460",
+        "primary_dark": "#0a4f4c",
+        "primary_light": "#0e7975"
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "home_title",
+            "label": {
+                "ar": "عنوان الصفحة الرئيسية",
+                "en": "Home Page Title"
+            },
+            "value": "مرحباً بك في متجرنا",
+            "required": false,
+            "groups": ["home"]
+        },
+        {
+            "type": "textarea",
+            "id": "home_description",
+            "label": {
+                "ar": "وصف الصفحة الرئيسية",
+                "en": "Home Page Description"
+            },
+            "value": "اكتشف تشكيلتنا الواسعة من المنتجات المميزة",
+            "required": false,
+            "groups": ["home"]
+        },
+        {
+            "type": "image",
+            "id": "home_banner",
+            "label": {
+                "ar": "صورة البانر الرئيسي",
+                "en": "Main Banner Image"
+            },
+            "value": "",
+            "required": false,
+            "groups": ["home"]
+        },
+        {
+            "type": "repeater",
+            "id": "home_slides",
+            "label": {
+                "ar": "شرائح العرض",
+                "en": "Slider Slides"
+            },
+            "value": [],
+            "groups": ["home"],
+            "fields": [
+                {
+                    "type": "image",
+                    "id": "image",
+                    "label": {
+                        "ar": "الصورة",
+                        "en": "Image"
+                    }
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": {
+                        "ar": "العنوان",
+                        "en": "Title"
+                    }
+                },
+                {
+                    "type": "text",
+                    "id": "subtitle",
+                    "label": {
+                        "ar": "العنوان الفرعي",
+                        "en": "Subtitle"
+                    }
+                },
+                {
+                    "type": "text",
+                    "id": "button_text",
+                    "label": {
+                        "ar": "نص الزر",
+                        "en": "Button Text"
+                    }
+                },
+                {
+                    "type": "text",
+                    "id": "button_link",
+                    "label": {
+                        "ar": "رابط الزر",
+                        "en": "Button Link"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "number",
+            "id": "header_logo_height",
+            "label": {
+                "ar": "طول شعار المتجر",
+                "en": "Store Logo Height"
+            },
+            "value": 60,
+            "format": "integer",
+            "required": false,
+            "groups": ["header"]
+        }
+    ]
+}
