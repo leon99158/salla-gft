@@ -1,0 +1,90 @@
+<footer class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {# Store Info #}
+            <div>
+                <h3 class="font-bold text-lg mb-4">{{ store.name }}</h3>
+                <p class="text-gray-600 mb-4">{{ store.description }}</p>
+                <div class="flex space-x-4">
+                    {% if store.social.facebook %}
+                        <a href="{{ store.social.facebook }}" class="text-gray-600 hover:text-primary">
+                            <i class="sicon-facebook text-xl"></i>
+                        </a>
+                    {% endif %}
+                    {% if store.social.twitter %}
+                        <a href="{{ store.social.twitter }}" class="text-gray-600 hover:text-primary">
+                            <i class="sicon-twitter text-xl"></i>
+                        </a>
+                    {% endif %}
+                    {% if store.social.instagram %}
+                        <a href="{{ store.social.instagram }}" class="text-gray-600 hover:text-primary">
+                            <i class="sicon-instagram text-xl"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            {# Quick Links #}
+            <div>
+                <h3 class="font-bold text-lg mb-4">{{ trans('common.quick_links') }}</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="{{ link('pages/about') }}" class="text-gray-600 hover:text-primary">
+                            {{ trans('common.about_us') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ link('pages/contact') }}" class="text-gray-600 hover:text-primary">
+                            {{ trans('common.contact_us') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ link('pages/terms') }}" class="text-gray-600 hover:text-primary">
+                            {{ trans('common.terms') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ link('pages/privacy') }}" class="text-gray-600 hover:text-primary">
+                            {{ trans('common.privacy') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            {# Categories #}
+            <div>
+                <h3 class="font-bold text-lg mb-4">{{ trans('common.categories') }}</h3>
+                <ul class="space-y-2">
+                    {% for category in store.categories|slice(0, 4) %}
+                        <li>
+                            <a href="{{ category.url }}" class="text-gray-600 hover:text-primary">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {# Newsletter #}
+            <div>
+                <h3 class="font-bold text-lg mb-4">{{ trans('common.newsletter') }}</h3>
+                <p class="text-gray-600 mb-4">{{ trans('common.newsletter_desc') }}</p>
+                <form action="{{ link('newsletter/subscribe') }}" method="POST" class="flex">
+                    <input type="email" name="email" placeholder="{{ trans('common.email') }}" 
+                           class="flex-1 px-4 py-2 rounded-l-lg border-gray-300 focus:ring-primary focus:border-primary">
+                    <button type="submit" class="bg-primary text-white px-6 py-2 rounded-r-lg hover:bg-primary-dark">
+                        {{ trans('common.subscribe') }}
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {# Bottom Bar #}
+        <div class="border-t border-gray-200 mt-12 pt-8 text-center text-gray-600">
+            <p>{{ trans('common.copyright', {year: 'now'|date('Y'), store_name: store.name}) }}</p>
+            <div class="mt-4">
+                <img src="{{ asset('images/payments.png') }}" alt="Payment Methods" class="h-8 mx-auto">
+            </div>
+        </div>
+    </div>
+</footer>

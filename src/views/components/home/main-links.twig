@@ -1,0 +1,21 @@
+{% set links = component.links|default([]) %}
+
+<div class="py-8 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {% for link in links %}
+                <a href="{{ link.url }}" class="group">
+                    <div class="bg-white rounded-lg shadow-sm p-6 text-center transition duration-300 hover:shadow-md hover:bg-primary hover:text-white">
+                        {% if link.icon %}
+                            <i class="{{ link.icon }} text-3xl mb-4 transition duration-300 group-hover:text-white"></i>
+                        {% endif %}
+                        <h3 class="font-bold">{{ link.title }}</h3>
+                        {% if link.description %}
+                            <p class="text-sm mt-2 text-gray-600 group-hover:text-white/80">{{ link.description }}</p>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

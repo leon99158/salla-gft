@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ store.name }} | {{ page.title }}</title>
+    
+    {# Salla Default Head Tags #}
+    {{ salla.head }}
+
+    {# Custom Styles #}
+    <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}">
+</head>
+<body class="h-full font-body">
+    {# Header Component #}
+    {% component 'header.main' %}
+
+    {# Main Content #}
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    {# Footer Component #}
+    {% component 'footer.main' %}
+
+    {# Salla Default Footer Tags #}
+    {{ salla.footer }}
+
+    {# Custom Scripts #}
+    <script src="{{ asset('dist/js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% if user.is_logged %}
+    <div class="relative group">
+        <button class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+            <img src="{{ user.avatar }}" alt="{{ user.name }}" class="w-8 h-8 rounded-full">
+            <span>{{ user.name }}</span>
+            <i class="sicon-keyboard_arrow_down"></i>
+        </button>
+        
+        <div class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 hidden group-hover:block">
+            <a href="{{ link('customer/profile') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <i class="sicon-user ml-2"></i>
+                {{ trans('common.profile') }}
+            </a>
+            <a href="{{ link('customer/orders') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <i class="sicon-shopping-bag ml-2"></i>
+                {{ trans('common.orders') }}
+            </a>
+            <a href="{{ link('customer/favorites') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <i class="sicon-heart ml-2"></i>
+                {{ trans('common.favorites') }}
+            </a>
+            <div class="border-t border-gray-100 my-2"></div>
+            <a href="{{ link('logout') }}" class="block px-4 py-2 text-red-600 hover:bg-gray-100">
+                <i class="sicon-logout ml-2"></i>
+                {{ trans('common.logout') }}
+            </a>
+        </div>
+    </div>
+{% else %}
+    <a href="{{ link('login') }}" class="text-gray-700 hover:text-primary">
+        <i class="sicon-user text-xl"></i>
+    </a>
+{% endif %}

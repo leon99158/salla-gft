@@ -1,0 +1,10 @@
+<div class="relative">
+    <button onclick="salla.cart.toggle()" class="text-gray-600 hover:text-primary transition-colors">
+        <i class="sicon-shopping-bag text-xl"></i>
+        {% if cart.items_count > 0 %}
+            <span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                {{ cart.items_count }}
+            </span>
+        {% endif %}
+    </button>
+</div>

@@ -1,0 +1,36 @@
+<header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between h-16">
+            {# Logo #}
+            <div class="flex-shrink-0">
+                <a href="{{ store.url }}">
+                    <img src="{{ store.logo }}" alt="{{ store.name }}" class="h-8">
+                </a>
+            </div>
+
+            {# Main Navigation #}
+            <div class="hidden md:block">
+                {% component 'header.menu' %}
+            </div>
+
+            {# User Actions #}
+            <div class="flex items-center space-x-4">
+                {# Search #}
+                <button class="text-gray-600 hover:text-primary transition-colors">
+                    <i class="sicon-search text-xl"></i>
+                </button>
+
+                {# Cart #}
+                {% component 'header.cart' %}
+
+                {# User Menu #}
+                {% component 'header.user' %}
+
+                {# Mobile Menu Button #}
+                <button class="md:hidden text-gray-600 hover:text-primary transition-colors">
+                    <i class="sicon-menu text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>

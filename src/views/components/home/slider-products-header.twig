@@ -1,0 +1,81 @@
+{% set products = component.products|default([]) %}
+{% set title = component.title|default(trans('common.featured_products')) %}
+
+<div class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold">{{ title }}</h2>
+            <div class="flex gap-2">
+                <button class="products-slider-prev bg-gray-100 hover:bg-primary hover:text-white p-2 rounded-full transition duration-300">
+                    <i class="sicon-chevron-left text-xl"></i>
+                </button>
+                <button class="products-slider-next bg-gray-100 hover:bg-primary hover:text-white p-2 rounded-full transition duration-300">
+                    <i class="sicon-chevron-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        {% if products|length > 0 %}
+            <div class="swiper products-slider">
+                <div class="swiper-wrapper">
+                    {% for product in products %}
+                        <div class="swiper-slide">
+                            <div class="group bg-white rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                                <div class="relative aspect-square overflow-hidden rounded-t-lg">
+                                    <img src="{{ product.image }}" alt="{{ product.name }}" 
+                                         class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                                    {% if product.promotion_title %}
+                                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded">
+                                            {{ product.promotion_title }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-medium mb-2 line-clamp-2">{{ product.name }}</h3>
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-primary font-bold">{{ product.price }}</div>
+                                        {% if product.has_sale_price %}
+                                            <div class="text-gray-400 line-through text-sm">{{ product.regular_price }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <button onclick="salla.cart.addItem({{ product.id }})" 
+                                            class="w-full mt-4 btn btn-primary">
+                                        {{ trans('common.add_to_cart') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="text-center text-gray-500 py-8">
+                {{ trans('common.no_products_found') }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productsSlider = new Swiper('.products-slider', {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            navigation: {
+                nextEl: '.products-slider-next',
+                prevEl: '.products-slider-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                },
+            },
+        });
+    });
+</script>

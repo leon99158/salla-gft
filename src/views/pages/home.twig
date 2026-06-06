@@ -1,0 +1,56 @@
+{% extends "layouts.master" %}
+
+{% block content %}
+    {# Enhanced Slider #}
+    {% component 'home.enhanced-slider' %}
+
+    {# Main Links #}
+    {% component 'home.main-links' %}
+
+    {# Featured Products with Header #}
+    {% component 'home.slider-products-header' with {
+        title: trans('common.featured_products')
+    } %}
+
+    {# Enhanced Square Images #}
+    {% component 'home.enhanced-square' %}
+
+    {# Categories #}
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8">{{ trans('common.categories') }}</h2>
+            {% component 'home.categories' %}
+        </div>
+    </section>
+
+    {# Brands #}
+    {% component 'home.brands' %}
+
+    {# Store Features #}
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {# Free Shipping #}
+                <div class="text-center">
+                    <i class="sicon-shipping-fast text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold mb-2">{{ trans('common.free_shipping') }}</h3>
+                    <p class="text-gray-600">{{ trans('common.free_shipping_desc') }}</p>
+                </div>
+
+                {# Secure Payment #}
+                <div class="text-center">
+                    <i class="sicon-shield-check text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold mb-2">{{ trans('common.secure_payment') }}</h3>
+                    <p class="text-gray-600">{{ trans('common.secure_payment_desc') }}</p>
+                </div>
+
+                {# Support #}
+                <div class="text-center">
+                    <i class="sicon-chat text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold mb-2">{{ trans('common.support') }}</h3>
+                    <p class="text-gray-600">{{ trans('common.support_desc') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

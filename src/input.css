@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-primary: #3869ff;
+    --color-secondary: #2ec5d3;
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-white hover:bg-primary-dark;
+    }
+
+    .btn-secondary {
+        @apply bg-secondary text-white hover:bg-secondary-dark;
+    }
+}

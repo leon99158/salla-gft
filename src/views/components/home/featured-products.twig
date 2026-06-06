@@ -1,0 +1,32 @@
+{% if products %}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {% for product in products %}
+            <div class="group">
+                <div class="relative aspect-square overflow-hidden rounded-lg mb-4">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" 
+                         class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                    {% if product.promotion_title %}
+                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded">
+                            {{ product.promotion_title }}
+                        </div>
+                    {% endif %}
+                </div>
+                <h3 class="font-medium mb-2">{{ product.name }}</h3>
+                <div class="flex items-center justify-between">
+                    <div class="text-primary font-bold">{{ product.price }}</div>
+                    {% if product.has_sale_price %}
+                        <div class="text-gray-400 line-through text-sm">{{ product.regular_price }}</div>
+                    {% endif %}
+                </div>
+                <button onclick="salla.cart.addItem({{ product.id }})" 
+                        class="w-full mt-4 btn btn-primary">
+                    {{ trans('common.add_to_cart') }}
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center text-gray-500 py-8">
+        {{ trans('common.no_products_found') }}
+    </div>
+{% endif %}

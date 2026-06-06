@@ -1,0 +1,50 @@
+// المتغيرات الرئيسية
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$main-font: var(--main-font);
+
+// الأنماط الأساسية
+body {
+    font-family: $main-font, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+// ترويسة الموقع
+.s-header {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
+    .s-navigation {
+        padding: 1rem 0;
+    }
+}
+
+// المحتوى الرئيسي
+.s-main {
+    min-height: 500px;
+    padding: 2rem 0;
+}
+
+// المنتجات المميزة
+.featured-products {
+    margin: 2rem 0;
+    
+    h2 {
+        color: $primary-color;
+        margin-bottom: 1.5rem;
+    }
+}
+
+// تذييل الصفحة
+.s-footer {
+    background: #f5f5f5;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
